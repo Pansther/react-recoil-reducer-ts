@@ -18,7 +18,7 @@ export interface SetAction {
 
 export type ActionTypes = IncrementAction | AddAction | SetAction;
 
-const getNewState = (
+const getCounterState = (
   state: CounterState,
   action: ActionTypes
 ): CounterState => {
@@ -38,11 +38,10 @@ const useCounter = () => {
   const [counterState, setCounterState] = useRecoilState(counterAtom);
 
   const dispatch = (action: ActionTypes) => {
-    const newState = getNewState(counterState, action);
-    setCounterState(newState);
+    setCounterState((state) => getCounterState(state, action));
   };
 
-  return [counterState, { dispatch }] as const;
+  return [counterState, dispatch] as const;
 };
 
 export default useCounter;

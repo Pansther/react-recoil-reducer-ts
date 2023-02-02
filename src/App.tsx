@@ -3,7 +3,7 @@ import useCounter from "./hooks/useCounter";
 import "./App.css";
 
 function App() {
-  const [{ count }, { dispatch }] = useCounter();
+  const [{ count }, dispatch] = useCounter();
 
   return (
     <div className="App">
